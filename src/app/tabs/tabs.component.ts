@@ -12,7 +12,7 @@ export class TabsComponent {
   ];
   chosenList = 'all';
 
-  onChoose(side) {
+  onChoose(side: string) {
     this.chosenList = side;
   }
 
@@ -24,5 +24,12 @@ export class TabsComponent {
     return this.characters.filter((char) => {
       return char.side === this.chosenList;
     });
+  }
+
+  onSideChosen(charInfo) {
+    const pos = this.characters.findIndex((char) => {
+      return char.name === charInfo.name;
+    });
+    this.characters[pos].side = charInfo.side;
   }
 }
